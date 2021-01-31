@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import { Button } from './audioplayer';
+import { Button, ButtonLabel } from './audioplayer';
+import WrapperMain from '../Wrapper/wrapper';
 
 export default function CreatePlayer(){
     // var userUpload = "2";
@@ -9,15 +10,15 @@ export default function CreatePlayer(){
     // const userUpload = input.files;
 
     return (
-        <>
-        <h2>Upload an MP3 file...</h2>
-        <Button type="file" id="user-file-upload" value={userUpload}/>
+        <WrapperMain>
+        <Button type="file" id="user-file-upload" value={userUpload} hidden/>
+        <ButtonLabel for="user-file-upload"> Upload audio file</ButtonLabel>
         <ReactPlayer 
         url={userUpload}
         playing={false}
         controls={false}
 
         />
-        </>
+        </WrapperMain>
     );
 };

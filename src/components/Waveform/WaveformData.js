@@ -4,7 +4,7 @@ import WaveSurfer from 'wavesurfer.js';
 import { WaveformContainer, Wave, PlayButton } from './waveformStyle';
 
 class Waveform extends Component {  
-  componentDidMount() {
+  componentDidMount( ) {
     const track = document.querySelector('#track');
 
     this.waveform = WaveSurfer.create({
@@ -28,7 +28,7 @@ class Waveform extends Component {
   };
   
   render() {
-    const url = 'public/Audio/PianoConcertoCMajor.mp3';
+    const url = 'https://www.youtube.com/watch?v=neGFIzfprIE'
 
     return (
       <WaveformContainer>

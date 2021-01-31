@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 const WaveformContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100px; width: 100%;
     background: transparent;
 `;
@@ -14,20 +15,21 @@ const Wave = styled.div`
 `;
 
 const PlayButton = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    background: whitesmoke;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    padding-bottom: 3px;
-
-    &:hover{
-        background: #DDD
-    }
+margin-top: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100px;
+  background: #EFEFEF;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  &:hover {
+    background: #DDD;
+  }
 `;
 
 export {
