@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm i`
 
-Installs any missing node modules for this project.
+Installs any missing node modules for this project.\
 This will be necessary when cloning this repo for the first time.
 
 ### `npm start`
