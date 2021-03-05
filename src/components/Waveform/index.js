@@ -3,58 +3,56 @@ import WaveSurfer from 'wavesurfer.js';
 
 import { WaveformContainer, Wave, PlayButton } from './waveformStyle';
 
-function Waveform(track) {
+function Waveform({ track }) {
 
-  const ref = useRef();
-
-  // var wavesurferBlank = WaveSurfer.create({
-  //   container: '#waveform',
-  // });
-
-  console.log(track);
+  const waveformContainer = useRef();
+  let wavesurfer = '';
 
   useEffect(() => {
-    if (track && ref.current){
-      var wavesurfer = WaveSurfer.create({
-        container: ref.current,
-        // barWidth: 30,
-        // cursorWidth: 1,
+    if (track && waveformContainer.current){
+      console.log(track, 'trackstate 2');
+    
+       wavesurfer = WaveSurfer.create({
+        container: waveformContainer.current,
+        barWidth: 5,
+        cursorWidth: 2,
+        cursorColor: '#2D5BFF',
         backend: 'WebAudio',
-        // mediaControls: true,
-        height: 200, 
-        // barGap: 3,
-        // barRadius: 3,
-        progressColor: '#2D5BFF',
+        showTime: true,
+        height: 300,
+        barHeight: 3,
+        barRadius: 3,
+        progressColor: '#EFEFEF',
         responsive: true,
-        waveColor: '#EFEFEF'
-        // cursorColor: 'transparent',
+        waveColor: '#2D5BFF',
       });
 
-      // wavesurfer.on('ready', function(){
-      //   console.log('i am here');
-      //   wavesurfer.play();
-      // });
       wavesurfer.load(track);
       console.log(wavesurfer);
-      // wavesurfer.drawer
       wavesurfer.drawBuffer();
     }
     return () => {
-      wavesurfer.destroy();
+      if (wavesurfer)
+      {wavesurfer.destroy()} 
     }
   }, [track]);
 
-  // handlePlay = () => {
-  //   this.setState({ playing: !this.state.playing });
-  //   this.wavesurfer.playPause();
-  // };
+ const handlePlay = () => {
+    if (wavesurfer){
+      wavesurfer.playPause();
+    }
 
+  };
     return (
+      <>
       <WaveformContainer>
-      <Wave ref={ref}></Wave>
-      <audio controls id="track" src={track} type="audio/mpeg"/> {console.log(track, 'track!!!!!!')}
-      {/* <PlayButton onClick={this.}>test</PlayButton> */}
+      <Wave ref={waveformContainer}></Wave>
       </WaveformContainer>
+      {track ? (<PlayButton onClick={handlePlay}>test</PlayButton>)
+      : (
+        <></>
+      )}
+      </>
     );
 };
 

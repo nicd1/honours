@@ -5,31 +5,33 @@ const WaveformContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100px; width: 100%;
+    height: 100%; width: 100%;
     background: transparent;
+    margin-top: 150px;
+    margin-bottom: 150px;
 `;
 
 const Wave = styled.div`
     width: 100%;
-    height: 90px;
+    height: 300px;
 `;
 
 const PlayButton = styled.button`
-margin-top: 1100px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: auto;
-  height: 100px;
+  height: auto;
   background: #EFEFEF;
   border-radius: 50%;
   border: none;
-  outline: none;
   cursor: pointer;
   padding: 15px;
-  &:hover {
-    background: #DDD;
-  }
+  :hover {
+       color: #ebeaea;
+       background-color: #9b9b9b;
+       border-color: #bababa;
+   }
 `;
 
 export {
