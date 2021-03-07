@@ -7,8 +7,8 @@ const WaveformContainer = styled.div`
     justify-content: center;
     height: 100%; width: 100%;
     background: transparent;
-    margin-top: 150px;
-    margin-bottom: 150px;
+    margin-top: 130px;
+    margin-bottom: 130px;
 `;
 
 const Wave = styled.div`

@@ -7,11 +7,15 @@ import WrapperMain from './components/Wrapper/wrapper';
 // TODO: change waveform colour based on 'major' or 'minor'
 
 function App() {
+  const [gradient, setGradient] = useState('');
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState();
   const [isSelected, setIsSelected] = useState(false);
   const changeHandler = (event) => {
     setFileName(event.target.files[0].name);
+    if (event.target.files[0].name.includes('Major')){
+      setGradient('major');
+    }
     const reader = new FileReader();
     reader.onload = function(event) {
       setFile(event.target.result);
@@ -25,13 +29,12 @@ function App() {
 
   return (
     <div className="App">
-      {console.log(file, 'file in app')}
       <header className="App-header">
         <h1>The Colour of Music</h1>  
         This app aims to replicate the
         experience of music through the
         use of colour.
-        {file !== '' ? (<Waveform track={file}/>)
+        {file !== '' ? (<Waveform track={file} gradient={gradient}/>)
          : (
            <p>no waveform</p>
          )} 

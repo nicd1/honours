@@ -3,32 +3,47 @@ import WaveSurfer from 'wavesurfer.js';
 
 import { WaveformContainer, Wave, PlayButton } from './waveformStyle';
 
-function Waveform({ track }) {
+function Waveform({ track, gradient }) {
+  console.log(gradient, 'gradient');
 
   const waveformContainer = useRef();
   let wavesurfer = '';
 
+  if (gradient === 'major'){
+    var ctx = document.createElement('canvas').getContext('2d');
+    var linGrad = ctx.createLinearGradient(0, 0, 4000, 128);
+    linGrad.addColorStop(0, '#fb513b'); 
+    linGrad.addColorStop(0.5, '#eeff4b'); 
+    linGrad.addColorStop(1, '#f0ff76');
+  }
+
+  if (gradient === 'minor'){
+    ctx = document.createElement('canvas').getContext('2d');
+    linGrad = ctx.createLinearGradient(0, 0, 4000, 128);
+    linGrad.addColorStop(0, '#350e45'); 
+    linGrad.addColorStop(0.55, '#0b0b57'); 
+    linGrad.addColorStop(1, '#0f3d18');
+  }
+
   useEffect(() => {
     if (track && waveformContainer.current){
-      console.log(track, 'trackstate 2');
     
        wavesurfer = WaveSurfer.create({
         container: waveformContainer.current,
         barWidth: 5,
         cursorWidth: 2,
-        cursorColor: '#2D5BFF',
+        cursorColor: 'transparent',
         backend: 'WebAudio',
         showTime: true,
         height: 300,
         barHeight: 3,
         barRadius: 3,
-        progressColor: '#EFEFEF',
+        progressColor: linGrad,
         responsive: true,
-        waveColor: '#2D5BFF',
+        waveColor: '#f5f5f5',
       });
 
       wavesurfer.load(track);
-      console.log(wavesurfer);
       wavesurfer.drawBuffer();
     }
     return () => {
