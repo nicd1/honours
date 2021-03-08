@@ -9,7 +9,7 @@ function Waveform({ track, gradient }) {
   const waveformContainer = useRef();
   let wavesurfer = '';
 
-  if (gradient === 'major'){
+  if (gradient === 'minor'){
     var ctx = document.createElement('canvas').getContext('2d');
     var linGrad = ctx.createLinearGradient(0, 0, 4000, 128);
     linGrad.addColorStop(0, '#fb513b'); 
@@ -17,7 +17,7 @@ function Waveform({ track, gradient }) {
     linGrad.addColorStop(1, '#f0ff76');
   }
 
-  if (gradient === 'minor'){
+  if (gradient === 'major'){
     ctx = document.createElement('canvas').getContext('2d');
     linGrad = ctx.createLinearGradient(0, 0, 4000, 128);
     linGrad.addColorStop(0, '#350e45'); 
@@ -35,7 +35,7 @@ function Waveform({ track, gradient }) {
         cursorColor: 'transparent',
         backend: 'WebAudio',
         showTime: true,
-        height: 300,
+        height: 350,
         barHeight: 3,
         barRadius: 3,
         progressColor: linGrad,
@@ -63,7 +63,7 @@ function Waveform({ track, gradient }) {
       <WaveformContainer>
       <Wave ref={waveformContainer}></Wave>
       </WaveformContainer>
-      {track ? (<PlayButton onClick={handlePlay}>test</PlayButton>)
+      {track ? (<PlayButton onClick={handlePlay}>Play</PlayButton>)
       : (
         <></>
       )}

@@ -12,6 +12,7 @@ function App() {
   const [fileName, setFileName] = useState();
   const [isSelected, setIsSelected] = useState(false);
   const changeHandler = (event) => {
+    setGradient('');
     setFileName(event.target.files[0].name);
     if (event.target.files[0].name.includes('Major')){
       setGradient('major');

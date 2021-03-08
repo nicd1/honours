@@ -8,7 +8,7 @@ const WaveformContainer = styled.div`
     height: 100%; width: 100%;
     background: transparent;
     margin-top: 130px;
-    margin-bottom: 130px;
+    margin-bottom: 90px;
 `;
 
 const Wave = styled.div`
@@ -18,6 +18,7 @@ const Wave = styled.div`
 
 const PlayButton = styled.button`
   display: flex;
+  margin-bottom: 20px;
   justify-content: center;
   align-items: center;
   width: auto;
