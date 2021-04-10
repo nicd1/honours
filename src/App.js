@@ -4,8 +4,6 @@ import Waveform from './components/Waveform';
 import { Button, ButtonLabel } from './components/AudioPlayer/audioplayer';
 import WrapperMain from './components/Wrapper/wrapper';
 
-// TODO: change waveform colour based on 'major' or 'minor'
-
 function App() {
   const [gradient, setGradient] = useState('');
   const [file, setFile] = useState();
@@ -16,6 +14,8 @@ function App() {
     setFileName(event.target.files[0].name);
     if (event.target.files[0].name.includes('Major')){
       setGradient('major');
+    } else if (event.target.files[0].name.includes('Minor')){
+      setGradient('minor');
     }
     const reader = new FileReader();
     reader.onload = function(event) {

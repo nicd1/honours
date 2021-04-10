@@ -8,18 +8,19 @@ function Waveform({ track, gradient }) {
 
   const waveformContainer = useRef();
   let wavesurfer = '';
+  var fillColour = null;
 
-  if (gradient === 'minor'){
-    var ctx = document.createElement('canvas').getContext('2d');
-    var linGrad = ctx.createLinearGradient(0, 0, 4000, 128);
+  if (gradient === 'major'){
+    fillColour = document.createElement('canvas').getContext('2d');
+    var linGrad = fillColour.createLinearGradient(0, 0, 4000, 128);
     linGrad.addColorStop(0, '#fb513b'); 
     linGrad.addColorStop(0.5, '#eeff4b'); 
     linGrad.addColorStop(1, '#f0ff76');
   }
 
-  if (gradient === 'major'){
-    ctx = document.createElement('canvas').getContext('2d');
-    linGrad = ctx.createLinearGradient(0, 0, 4000, 128);
+  if (gradient === 'minor'){
+    fillColour = document.createElement('canvas').getContext('2d');
+    linGrad = fillColour.createLinearGradient(0, 0, 4000, 128);
     linGrad.addColorStop(0, '#350e45'); 
     linGrad.addColorStop(0.55, '#0b0b57'); 
     linGrad.addColorStop(1, '#0f3d18');
